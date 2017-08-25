@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <script src="rem.js"></script>
+    <title>移动端todolist</title>
+    <style>
+        *{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            font-family: "苹方";
+            box-sizing: border-box;
+            font-size: 0.2rem;
+        }
+        body,html{
+            width: 100%;
+            /*height:100%;*/
+        }
+        section{
+            width:100%;
+            /*height: 100%;*/
+            background: #333;
+            /*float: left;*/
+            text-align: center;
+            color: #fff;
+            /*padding-top: 0.2rem;*/
+        }
+        .title{
+            font-size:0.3rem;
+            line-height:0.5rem;
+            padding: 10px 0;
+        }
+        .leftbar ul li{
+            overflow: hidden;
+            padding: 0.1rem;
+            line-height: 0.27rem;
+            cursor: pointer;
+            user-select: none;
+        }
+        .leftbar ul li:nth-child(2):before,.leftbar ul li:nth-child(3):before{
+            content: "";
+            width: 0.1rem;
+            height: 0.1rem;
+            border: 0.03rem solid #fff;
+            border-radius: 50%;
+            float: left;
+            margin: 0.05rem 0.1rem;
+        }
+        .leftbar ul li:nth-child(2) h3,.leftbar ul li:nth-child(3) h3{
+            font-size:0.15rem;
+            font-weight: normal;
+            float: left;
+        }
+        .main{
+            width:100%;
+            /*height: 100%;*/
+            /*float: left;*/
+            background: #FF7376;
+            position: relative;
+            padding: 0.2rem 0 0.8rem;
+        }
+        .con{
+            width: 5rem;
+            height:5rem;
+            margin:0 auto;
+            margin-top: 0.5rem;
+            border: 1px solid yellow;
+            border-radius:0.3rem;
+            overflow: hidden;
+        }
+        .add label{
+            display: block;
+            width: 4rem;
+            height: 3rem;
+            margin:0 auto;
+            margin-top:0.4rem;
+            margin-bottom:0.4rem;
+            position: relative;
+        }
+        .textarea{
+            width:4rem;
+            height:3rem;
+            display: block;
+        }
+        .notice{
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            float: right;
+            font-size: 0.2rem;
+        }
+        .wait,.done{
+            display: none;
+        }
+        .add h3,.items h3,.waitbtn{
+            text-align: center;
+            line-height:0.6rem;
+            width: 100%;
+            height: 0.6rem;
+            background: #fff;
+            font-size: 0.2rem;
+        }
+        .waitcon,.donecon{
+            width: 100%;
+            min-height: 3.8rem;
+            background: #ccc;
+            font-size: 0.2rem;
+        }
+        .waitList,.waitList div,.doneList,.doneList div{
+            overflow: hidden;
+        }
+        .waitList li,.doneList li{
+            float: left;
+            padding: 0.1rem 0.03rem;
+            margin: 0 0.08rem;
+        }
+        .text{
+            width:2.35rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .check{
+            margin-top: 2px;
+        }
+        .star{
+            display: inline-block;
+            width: 0.1rem;
+            height: 0.1rem;
+            background: #000;
+            border-radius: 50%;
+            margin:0.15rem;
+            float: right;
+        }
+        .Move{
+            float: left;
+            /*padding-left: 0.2rem;*/
+            display: inline-block;
+            padding: 0.3rem 0.5rem;
+        }
+        .title{
+            text-align: center;
+            display: inline-block;
+        }
+        .AddItem{
+            float:right;
+            display: inline-block;
+            padding: 0.3rem 0.5rem;
+        }
+        .footbox{
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom:-1rem;
+            background: #000;
+        }
+        .footer{
+            width: 5rem;
+            height:1rem;
+            /*width: 100%;*/
+            margin:0 auto;
+            display: flex;
+            justify-content: space-around;
+        }
+        [type="button"]{
+            width: 1.5rem;
+            height: 0.5rem;
+            border: 0;
+            background: #ff6;
+            border-radius: 0.25rem;
+            /*margin-left:1.7rem;*/
+            margin-top: 0.3rem;
+        }
+        [type="checkbox"]{
+            width: 0.3rem;
+            height: 0.3rem;
+            margin-top: 0.2rem;
+        }
+        #0{
+            background: #FA9396;
+        }
+        #1{
+            background: #E390E2;
+        }
+        #2{
+            background: #72AB7E;
+        }
+        #3{
+            background:#51D7D8;
+        }
+        #4{
+            background:#F8F872;
+        }
+        #5{
+            background: #01BDBE;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="leftbar">
+            <ul>
+                <span class="Move">Move</span>
+                <span class="title">To-Do List</span>
+                <span class="AddItem">Add Item</span>
+            </ul>
+        </div>
+    </section>
+    <div class="main">
+        <ul class="con">
+            <li class="add">
+                <h3>添加新的事件</h3>
+                <label>
+                    <textarea autofocus class="textarea"></textarea>
+                    <div class="notice"><span>00</span>/40</div>
+                </label>
+                <div class="waitbtn">
+                </div>
+                <div class="footbox">
+                    <div class="footer">
+                        <input type="button" value="提交" class="btn submit">
+                        <input type="button" value="取消" class="btn">
+                    </div>
+                </div>
+            </li>
+            <li class="wait items">
+                <h3>未完成事件</h3>
+                <div class="waitcon item">
+                   <ul class="waitList">
+                       <!--<li class="check"><input type="checkbox"></li>-->
+                       <!--<li class="text">文本文本文本文本文本文本文本文本文本文本文本文本</li>-->
+                       <!--<li class="time">2017/8/11 11:11</li>-->
+                       <!--<i></i>-->
+                   </ul>
+               </div>
+                <div class="waitbtn">
+                </div>
+                <div class="footbox">
+                    <div class="footer">
+                        <input type="button" value="查看已完成" class="btn movetobtn">
+                        <input type="button" value="移动到已完成" class="btn movetobtn1">
+                    </div>
+                </div>
+            </li>
+            <li class="done items">
+                <h3>已完成事件</h3>
+                <div class="donecon item">
+                    <ul class="doneList"></ul>
+                </div>
+                <div class="waitbtn">
+                    <!--<input type="button" value="删除" class="btn Move">-->
+                </div>
+                <div class="footbox">
+                    <div class="footer">
+                        <input type="button" value="查看未完成" class="btn moveoutbtn">
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+</body>
+<script src="jquery-3.2.1.min.js"></script>
+
+<script>
+    $(".textarea").on("keydown keyup",function () {
+        var l=$(this).val().length;
+        if(l>40){
+            alert("字数已经超过限制");
+            l=40;
+            $(this).val(function (index,val) {
+                return val.slice(0,40);
+            })
+        }
+        $(".notice span").text(l);
+    })
+    $(".submit").click(function () {
+        var val=$(".textarea").val();
+        if(val==""){
+            alert("请输入内容再提交");
+            return;
+        }
+        var data=getData();
+        var date=new Date();
+        var time=date.getTime();
+        data.push({text:val,time,isDone:false,isStar:false,isDelete:false});
+        saveData(data);
+        reWrite();
+        $(".textarea").val("");
+        $(".notice span").text("00");
+
+    })
+    function getData() {
+        if(localStorage.todo){
+            return JSON.parse(localStorage.todo);
+        }else {
+            return [];
+        }
+    }
+    function saveData(data) {
+        localStorage.todo=JSON.stringify(data);
+    }
+    $(".add h3").click(function () {
+        $(".add").slideUp(200);
+        $(".wait").slideDown(200);
+    })
+    //movetobtn
+    $(".movetobtn").click(function () {
+        $(".wait").slideUp(200);
+        $(".done").slideDown(200);
+    })
+    //moveoutbtn
+    $(".moveoutbtn").click(function () {
+        $(".wait").slideDown(200);
+        $(".done").slideUp(200);
+    })
+    var colorarr=["#FA9396","#E390E2","#72AB7E","#51D7D8","#F8F872","#01BDBE"];
+    function getcolor() {
+        let newarr=[];
+        for(let i=0;i<1;i++){
+            do{
+                let index=Math.floor(Math.random()*6);
+                var content=colorarr[index];
+            }while (newarr.includes(content))
+            newarr.push(content);
+        }
+        return newarr[0];
+    }
+    function reWrite() {
+        $(".item ul").empty();
+        var data=getData();
+        var str1="",str2="";
+        $.each(data,function (index,value) {
+            if(value.isDone==false){
+                str1+=`<div id="${index}" style="background: ${getcolor()}">
+                            <li class="check"><input type="checkbox"></li>
+                            <li class="text">${value.text}</li>
+                            <li class="time">${time(value.time)}</li>
+                            <i class="star"></i>
+                        </div>`
+            }else {
+                str2+=`<div id="${index}" style="background: ${getcolor()}">
+                            <li class="check"><input type="checkbox"></li>
+                            <li class="text">${value.text}</li>
+                            <li class="time">${time(value.time)}</li>
+                            <i class="star"></i>
+                        </div>`
+            }
+        })
+        $(".waitcon ul").html(str1);
+        $(".donecon ul").html(str2);
+    }
+    reWrite();
+    $(".AddItem").click(function () {
+        $(".wait").slideUp(200);
+        $(".add").slideDown(200);
+    });
+
+    function time(ms) {
+        var date=new Date();
+        date.setTime(ms);
+        var year=date.getFullYear();
+        var mouth=date.getMonth()+1;
+        var getdate=date.getDate();
+        var hour=date.getHours();
+        var minute=date.getMinutes();
+        var second=date.getSeconds();
+        return year+"/"+mouth+"/"+getdate+"&nbsp;"+hour+":"+minute+":"+second;
+    }
+    $(".movetobtn1").click(function () {
+        $(".waitcon .waitList div").each(function () {
+            var data=getData();
+            if($(this).find(":checkbox").prop("checked")){
+                var index=$(this).attr("id");
+                data[index].isDone=true;
+            }
+            saveData(data);
+            reWrite();
+        })
+    })
+    $(".Move").click(function () {
+        var data=getData();
+        $(".donecon .doneList div").each(function () {
+            if($(this).find(":checkbox").prop("checked")){
+                var index=$(this).attr("id");
+                data[index].isDelete=true;
+            }
+        })
+        data=data.filter(function (ele) {
+            return !ele.isDelete;
+        })
+        saveData(data);
+        reWrite();
+    })
+//    $(".leftbar ul li").click(function () {
+//        $(".add").slideUp(200);
+//        var index=$(this).index();
+//        $(".con .items").slideUp(200).eq(index-1).slideDown(200);
+//    })
+
+</script>
+</html>

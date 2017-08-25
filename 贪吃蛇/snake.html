@@ -1,0 +1,383 @@
+﻿<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>贪吃蛇大作战</title>
+
+<meta name="description" content="jqFloat.js is a jQuery plugin that able to make any HTML objects appear to be floating on your webpage."/>
+
+<meta name="keywords" content="jqfloat.js, jquery, plugin, floating, animation, cloud"/>
+
+<!-- <link rel="shortcut icon" href="http://www.inwebson.com/wp-content/themes/inwebson2/favicon.ico" /> -->
+
+<link rel="stylesheet" href="style.css" />
+
+<script src="http://www.jq22.com/jquery/1.7.2/jquery.min.js"></script>
+
+<!--[if lt IE 9]>
+
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+
+<![endif]-->
+
+<script src="jqfloat.min.js"></script>
+
+<script>
+
+$(document).ready(function() {
+
+	
+
+	//vendor script
+
+	$('header')
+
+	.css({ 'top':-70 })
+
+	.delay(500)
+
+	.animate({'top': 0}, 800);
+
+	
+
+	$('footer')
+
+	.css({ 'bottom':-40 })
+
+	.delay(500)
+
+	.animate({'bottom': 0}, 800);
+
+	
+
+	//jqfloat.js script
+
+	$('.cloud').each(function() {
+
+		$(this).jqFloat({
+
+			width:Math.floor(Math.random()*10)*10,
+
+			height:10,
+
+			speed:Math.floor(Math.random()*10)*100 + 500
+
+		});
+
+	});	
+
+	$('#sun').jqFloat({
+
+		width:10,
+
+		height:50,
+
+		speed:1800
+
+	});
+
+	$('.butterfly').jqFloat({
+
+		width:400,
+
+		height:100,
+
+		speed:1500
+
+	});
+
+	$('#snail, #message').jqFloat('stop',{
+
+		width:5,
+
+		height:0,
+
+		speed:30
+
+	});
+
+	$('#snail, #message').hover(function() {
+
+		$(this).jqFloat('play');
+
+	}, function() {
+
+		$(this).jqFloat('stop');
+
+	});
+
+	
+
+	var clicked = false;
+
+	//define balloon attribute
+
+	$('#balloon').jqFloat('stop',{
+
+		width:5,
+
+		height:30,
+
+		speed:1500,
+
+		minHeight:300
+
+	});
+
+	$('#balloon').on('click', function() {
+
+		clicked = !clicked;
+
+		if(clicked)
+
+			$(this).jqFloat('play');
+
+		else 
+
+			$(this).jqFloat('stop');
+
+	});
+
+	$('#social').jqFloat({
+
+		width: 10,
+
+		height: 10,
+
+		speed: 1500
+
+	});
+
+});
+
+</script>
+	<style>
+		*{
+			box-sizing: border-box;
+		}
+		.title{
+			width: 500px;
+			/*height:30px;*/
+			margin: 0 auto;
+			font-size:73px;
+			font-family: 隶书;
+			text-align:center;
+			/*line-height:30px;*/
+		}
+		.box{
+			width: 650px;
+			height: 500px;
+			margin: 0 auto;
+		}
+		.scence{
+			width: 500px;
+			height: 500px;
+			float: left;
+			/*box-sizing: border-box;*/
+			background: url("5.jpg") no-repeat center;
+			background-size: cover;
+		}
+		.right{
+			width: 150px;
+			height: 500px;
+			float: left;
+			background:#FF8DE5;
+			padding-top: 20px;
+
+		}
+		.title1{
+			width: 110px;
+			height: 60px;
+			margin:0px 20px 30px;
+			text-align: center;
+		}
+		.title2{
+			width: 110px;
+			height:30px;
+			margin:0px 20px 30px;
+			text-align: center;
+		}
+		.name,.scor,.start1,.start2{
+			width: 110px;
+			height: 30px;
+			background: #fff;
+			line-height: 30px;
+			border: 1px solid #FF8DE5;
+			cursor: pointer;
+			user-select: none;
+		}
+		.start1,.start2{
+			margin-top: 15px;
+		}
+		.snake{
+			width: 25px;
+			height:25px;
+			box-sizing: border-box;
+			float: left;
+			/*border: 1px solid #00ee55;*/
+			border-radius: 50%;
+		}
+		.snakebody{
+			background:url("2.png") no-repeat center;
+			background-size: cover;
+		}
+		.snakehead{
+			background:url("1.jpg") no-repeat center center;
+			background-size: cover;
+		}
+		.food{
+			background:url("3.png") no-repeat center center;
+			background-size: cover;
+		}
+	</style>
+</head>
+
+<body>
+
+ <!--Header -->
+
+<header>
+
+	<div class="title">贪吃蛇大作战</div>
+
+</header>
+
+
+
+<!-- Content -->
+
+<section id="wrapper">
+
+	<div id="sky">
+
+		<div id="cloud1" class="cloud"></div>
+
+		<div id="cloud2" class="cloud"></div>
+
+		<div id="cloud3" class="cloud"></div>
+
+		<div id="cloud4" class="cloud"></div>
+
+		<div id="sun"></div>
+
+	</div>
+
+	<div id="ground">
+
+		<div id="snail"></div>
+
+		<div id="message">Don't touch me!!!</div>
+
+		<div id="fly1" class="butterfly"></div>
+
+		<div id="fly2" class="butterfly"></div>
+
+	</div>
+
+	<div id="balloon"></div>
+
+	<div id="iefix"></div>
+
+	<div id="holder">
+		<div class="box">
+			<div class="scence"></div>
+			<div class="right">
+				<div class="title1">
+					<div class="name">得分</div>
+					<div class="scor">0</div>
+				</div>
+				<div class="title2">
+					<div class="start1">开始</div>
+				</div>
+				<div class="title2">
+					<div class="start2">暂停</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</section>
+</body>
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+	for(var i=0;i<20;i++){
+		for(var j=0;j<20;j++){
+			$("<div></div>").addClass("snake").attr("id",j+"-"+i).appendTo(".scence")
+		}
+	}
+	var snakearr=[{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0},{x:4,y:0}];
+	var snakehead=snakearr[snakearr.length-1];
+	function drawsnake() {
+		$.each(snakearr,function (index,value) {
+			$("#"+value.x+"-"+value.y).addClass("snakebody");
+		})
+		$("#"+snakehead.x+"-"+snakehead.y).addClass("snakehead");
+	}
+	drawsnake();
+	var dir="r";
+	function move() {
+		$(".snakehead").removeClass("snakehead");
+		$(".snakebody").removeClass("snakebody");
+		switch (dir){
+			case "r":snakehead={x:snakehead.x+1,y:snakehead.y};break;
+			case "b":snakehead={x:snakehead.x,y:snakehead.y+1};break;
+			case "t":snakehead={x:snakehead.x,y:snakehead.y-1};break;
+			case "l":snakehead={x:snakehead.x-1,y:snakehead.y};break;
+		}
+		snakearr.push(snakehead);
+		var head=$("#"+snakehead.x+"-"+snakehead.y);
+		if(head.hasClass("snakebody")||head.length==0){
+			alert("游戏结束,当前得分"+scornum+"");
+			location.reload();
+		}
+		if(head.hasClass("food")){
+			head.removeClass("food");
+			creatfood();
+		}else {
+			snakearr.shift();
+		}
+		drawsnake();
+	}
+	var st;
+	$(".start1").click(function () {
+		st=setInterval(move,300);
+	})
+	var flag=true;
+	$(".start2").click(function () {
+		if(flag){
+			clearInterval(st);
+			$(this).html("继续")
+		}else {
+			st=setInterval(move,500);
+			$(this).html("暂停")
+		}
+		flag=!flag;
+	})
+	$(document).keydown(function (e) {
+		switch (e.keyCode){
+			case 37:dir="l";break;
+			case 38:dir="t";break;
+			case 39:dir="r";break;
+			case 40:dir="b";break;
+		}
+	})
+	function creatfood() {
+		do{
+			var rx=Math.floor(Math.random()*20)
+			var ry=Math.floor(Math.random()*20)
+		}while ($("#"+rx+"-"+ry).hasClass("snakebody"));
+		$("#"+rx+"-"+ry).addClass("food");
+		addscore();
+	}
+	creatfood();
+
+	var scornum
+	function addscore() {
+		scornum=$(".scor").html();
+		scornum++;
+		$(".scor").html(scornum);
+	}
+</script>
+</html>

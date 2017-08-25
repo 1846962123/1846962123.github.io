@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/jquery.fullPage.css">
+    <link rel="stylesheet" href="css/gerenzhuye.css">
+
+    <style>
+        .section{
+            font-size:20px;
+            text-align: center;
+        }
+        .menu{
+            text-align: center;
+            line-height: 30px;
+            position: fixed;
+            top:0;
+            left: 0;
+            background: rgba(115, 208, 192, 0.84);
+        }
+        .menu ul{
+            margin: 0;
+            padding: 0;
+        }
+        .menu ul li{
+            margin: 0;
+            padding: 0;
+            float: left;
+            list-style: none;
+            width: 100px;
+            height: 30px;
+            margin: 5px;
+        }
+        .menu ul li a{
+            display: block;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            color: #fff;
+        }
+        .menu ul li a.active{
+            background: rgb(3, 138, 132);
+        }
+        .box,.box2{
+            width: 100px;
+            height: 100px;
+            position:absolute;
+            top:50%;
+            margin-top: -50px;
+            background: rgba(0,0,0,0.3);
+            opacity: 0;
+        }
+        .box{
+            left: 100px;
+        }
+        .box2{
+            right: 100px;
+        }
+        pre{
+            line-height: 30px;
+        }
+        .twobox{
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+        }
+        .twobox li{
+            width: 200px;
+            height: 200px;
+        }
+        .conleft,.conright{
+            overflow: hidden;
+            opacity: 0;
+        }
+        .five{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <div class="menu">
+        <ul>
+            <li><a data-menuanchor="a1" href="#a1">首页</a></li>
+            <li><a data-menuanchor="a2" href="#a2">技术专长</a></li>
+            <li><a data-menuanchor="a3" href="#a3">专业技能</a></li>
+            <li><a data-menuanchor="a4" href="#a4">项目展示</a></li>
+            <li><a data-menuanchor="a5" href="#a5">个人评价</a></li>
+            <li><a data-menuanchor="a6" href="#a6">联系方式</a></li>
+        </ul>
+    </div>
+    <div class="section page1">
+        <div class="myavatar"><img class="z-depth-3" src="src/img/8.png"></div>
+        <h1 class="myname">Hi,我叫孙换阳</h1>
+        <p class="subtitle">一腔热血的激情 ·  一个像素的执着</p>
+        <h5>web前端工程师</h5>
+        <a data-target="modal1" class="modal-trigger btn mybtn">详细介绍</a>
+    </div>
+    <div class="section">
+        <!--<div class="slide">2-1</div>-->
+        <!--<div class="slide">2-2</div>-->
+        <!--<div class="slide">2-3</div>-->
+
+        <!--<div class="two">-->
+            <!--<p>基本资料</p>-->
+            <!--<ul class="twobox">-->
+                <!--<li>-->
+                    <!--<p>基本信息</p>-->
+                    <!--<span>姓名：孙换阳</span>-->
+                    <!--<span>女</span>-->
+                    <!--<br>-->
+                    <!--<span>年龄：24</span>-->
+                    <!--<span>籍贯：山西</span>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<p>毕业院校</p>-->
+                    <!--<span>太原理工大学</span>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<p>联系方式</p>-->
+                    <!--<span>电话：18335323966</span>-->
+                <!--</li>-->
+            <!--</ul>-->
+        <!--</div>-->
+        <div class="contain">
+            <h4 class="text-center">技术专长</h4>
+            <div class="myskills text-center">
+                <a class="stress">HTML/HTML5</a>
+                <a class="stress">CSS/CSS3</a>
+                <a class="stress">JavaScript</a>
+                <a class="stress">jQuery</a>
+                <a class="stress">Bootstrap</a>
+                <a class="stress">Less/Sass</a>
+                <a class="stress">PhotoShop</a>
+                <a>Sublime</a>
+                <a>Git/Github</a>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="text">
+            <h4 class="title">
+                专业技能
+            </h4>
+            <div class="content">
+                <div class="conleft">
+                    <h3>PC端</h3>
+                    <pre>
+        熟练使用 Html5 Css3 JavaScript，
+        能够合理完成web端或者移动端页面的编写，
+        熟练使用原生js, 了解js面向对象原理，闭包以及原型结构，
+        能够合理利用面向对象,熟练使用 jQuery，并能完成相关项目。
+        熟悉animation fullpage lazyload 等实用插件的应用,轮播图，tab栏，
+        瀑布流，延迟加载，全屏滚动等等常用功能的实现
+        掌握 Ajax交互原理，数据的增删改查</pre>
+                </div>
+                <div class="conright">
+                    <h3>手机端</h3>
+                    <pre>熟练使用rem布局进行移动页面的开发
+        掌握移动端编程，会基于流式布局以及响应式布局开发基于移动端的页面。
+        </pre>
+                </div>
+            </div>
+        </div>
+        <pre >Bootstrap  CANVAS  jQuery  移动端   CSS3   响应式  Nodejs   HTML5</pre>
+    </div>
+    <div class="section">
+        <h4 class="four">项目展示</h4>
+        <!--<div class="box"></div>-->
+        <!--<div class="box2"></div>-->
+        <ul class="showbox">
+            <li>
+                <img src="img/tianmao.jpg" alt="">
+                <a href="../孙换阳天猫/tianmao.html" class="mask" >点击查看</a>
+            </li>
+            <li>
+                <img src="img/xiaomi.jpg" alt="">
+                <a href='../孙换阳小米/xianmi.html' class="mask">点击查看</a>
+            </li>
+            <li>
+                <img src="img/todolist (2).jpg" alt="">
+                <a href="../todolist/TODOlist.html" class="mask">点击查看</a>
+            </li>
+            <li>
+                <img src="img/todolist1.jpg" alt="">
+                <a href="../移动端TODOLIST/TODOlist.html" class="mask">点击查看</a>
+            </li>
+            <li>
+                <img src="img/snake.jpg" alt="">
+                <a href="../贪吃蛇/snake.html" class="mask">点击查看</a>
+            </li>
+            <li>
+                <img src="img/yubao.jpg" alt="">
+                <a href="../天气预报/天气预报.html" class="mask">点击查看</a>
+            </li>
+            <li>
+                <img src="img/dazi.jpg" alt="">
+                <a href="../打字游戏.html" class="mask">点击查看</a>
+            </li>
+            <li>
+                <img src="img/jiazhuang.jpg" alt="">
+                <a href="../孙换阳装饰有限/首页.html" class="mask">点击查看</a>
+            </li>
+        </ul>
+    </div>
+    <base target="_blank">
+
+    <div class="section">
+        <h4 class="sixtitle">个人评价</h4>
+        <pre class="five">
+        有责任，工作踏实，性格开朗乐观，积极上进。
+        易和人相处，拥有良好的亲和力。
+        喜欢js，非常热爱编程，喜欢钻研新的技术，
+        具有很强的自学能力和良好的学习方法，喜欢研究各种新的框架。
+        </pre>
+    </div>
+    <div class="section">
+        <div class="contain">
+            <h4 class="text-center">联系方式/社交账号</h4>
+            <div class="callme">
+                <pre>QQ：1846962123</pre>
+                <pre>邮箱：1846962123@qq.com</pre>
+                <pre>电话：18335323966</pre>
+            </div>
+            <div class="social">
+                <a href="" class="call-item"><img src="img/4.png"></a>
+                <a href="" class="call-item"><img src="img/5.png"></a>
+                <a class="call-item modal-trigger" href="#modal-wx"><img src="img/6.png"></a>
+
+    </div>
+
+</div>
+</body>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/jquery.fullpage.js"></script>
+<script src="js/jquery.easing.min.js"></script>
+<script>
+    $(".main").fullpage({
+        anchors:["a1","a2","a3","a4","a5","a6"],
+        sectionsColor:["#4dd0e1","#22c3aa","#f99","#c69","#c6f","#6c6"],
+        continuousVertical:true,
+        navigation:true,
+        navigationPosition:"left",
+        slidesNavigation:true,
+        fixedElements:".menu",
+        menu:".menu",
+        afterLoad:function (anchorLink,index) {
+            if(index==1){
+                $(".one").animate({opacity:1},{
+                    duration:1000,
+                    easing:"easeInOutElastic"
+                })
+            }
+            if(index==2){
+                $(".two").animate({opacity:1},{
+                    duration:1000,
+                    easing:"easeOutBounce"
+                })
+            }
+            if(index==3){
+                $(".conleft").width(0).animate({width:"100%",opacity:1},{
+                    duration:1000,
+                    easing:"easeInOutExpo"
+                })
+                $(".conright").width(0).animate({width:"100%",opacity:1},{
+                    duration:1000,
+                    easing:"easeOutElastic"
+                })
+            }
+            if(index==4){
+                $(".box").animate({left:400,opacity:1},{
+                    duration:600,
+                    easing:"easeOutBounce"
+                })
+                $(".box2").animate({right:400,opacity:1},{
+                    duration:600,
+                    easing:"easeOutBounce"
+                })
+                $(".showbox li img").width(50).animate({width:200},{
+                    duration:1000,
+                    easing: "easeOutExpo"
+                })
+            }
+            if(index==5){
+                $(".five").slideDown(1000);
+            }
+
+        },
+        onLeave:function (index,nextIndex) {
+            if(index==1){
+                $(".one").animate({opacity:0})
+            }
+            if(index==2){
+                $(".two").animate({opacity:0})
+            }
+            if(index==3){
+                $(".conleft").animate({opacity:0})
+                $(".conright").animate({opacity:0})
+            }
+            if(index==4){
+                $(".box").animate({left:100,opacity:0})
+                $(".box2").animate({right:100,opacity:0})
+                $(".showbox li img").animate({width:0})
+            }
+            if(index==5){
+                $(".five").slideUp(500);
+            }
+        },
+
+//        afterLoad:function (anchorLink,index) {
+//            if(index==2){
+//                $(".two").animate({opacity:1},{
+//                    duration:1000,
+//                    easing:"zoomIn"
+//                })
+//            }
+//        },
+//        onLeave:function (index,nextIndex) {
+//            if(index==2){
+//                $(".two").animate({opacity:0})
+//            }
+//        },
+//
+//        afterLoad:function (anchorLink,index) {
+//            if(index==3){
+//                $(".conleft").animate({opacity:1},{
+//                    duration:1000,
+//                    easing:"fadeInLeftBig"
+//                })
+//                $(".conright").animate({opacity:1},{
+//                    duration:1000,
+//                    easing:"rubberBand"
+//                })
+//            }
+//        },
+//        onLeave:function (index,nextIndex) {
+//            if(index==3){
+//                $(".conleft").animate({opacity:0})
+//                $(".conright").animate({opacity:0})
+//            }
+//        },
+//
+//
+//        afterLoad:function (anchorLink,index) {
+//            if(index==4){
+//                $(".box").animate({left:400,opacity:1},{
+//                    duration:1000,
+//                    easing:"easeOutBounce"
+//                })
+//                $(".box2").animate({right:400,opacity:1},{
+//                    duration:1000,
+//                    easing:"easeOutBounce"
+//                })
+//            }
+//        },
+//        onLeave:function (index,nextIndex) {
+//            if(index==4){
+//                $(".box").animate({left:100,opacity:0})
+//                $(".box2").animate({right:100,opacity:0})
+//            }
+//        },
+
+//        afterLoad:function (anchorLink,index) {
+//            if(index==6){
+//                $(".sixtitle").animate({opacity:1},{
+//                    duration:1000,
+//                    easing:"fadeInDownBig "
+//                })
+//                $(".six").animate({opacity:1},{
+//                    duration:1000,
+//                    easing:"bounceIn"
+//                })
+//            }
+//        },
+//        onLeave:function (index,nextIndex) {
+//            if(index==6){
+//                $(".sixtitle").animate({opacity:0})
+//                $(".six").animate({opacity:0})
+//            }
+//        },
+
+
+
+
+    })
+</script>
+</html>
